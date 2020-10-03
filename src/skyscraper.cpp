@@ -138,7 +138,7 @@ void Skyscraper::run()
     if(config.cacheOptions == "purge:all") {
       success = cache->purgeAll(config.unattend || config.unattendSkip);
     } else if(config.cacheOptions == "vacuum") {
-      success = cache->vacuumResources(config.inputFolder, Platform::getFormats(config.platform, config.extensions, config.addExtensions), config.verbosity, config.unattend || config.unattendSkip);
+      success = cache->vacuumResources(config.inputFolder, Platform::get().getFormats(config.platform, config.extensions, config.addExtensions), config.verbosity, config.unattend || config.unattendSkip);
     } else if(config.cacheOptions.contains("purge:m=") ||
 	      config.cacheOptions.contains("purge:t=")) {
       success = cache->purgeResources(config.cacheOptions);
@@ -151,7 +151,7 @@ void Skyscraper::run()
     exit(0);
   }
   if(config.cacheOptions.contains("report:")) {
-    cache->assembleReport(config, Platform::getFormats(config.platform,
+    cache->assembleReport(config, Platform::get().getFormats(config.platform,
 						       config.extensions,
 						       config.addExtensions));
     exit(0);
@@ -179,7 +179,7 @@ void Skyscraper::run()
   }
   cache->readPriorities();
 
-  QDir inputDir(config.inputFolder, Platform::getFormats(config.platform, config.extensions, config.addExtensions), QDir::Name, QDir::Files);
+  QDir inputDir(config.inputFolder, Platform::get().getFormats(config.platform, config.extensions, config.addExtensions), QDir::Name, QDir::Files);
   if(!inputDir.exists()) {
     printf("Input folder '\033[1;32m%s\033[0m' doesn't exist or can't be seen by current user. Please check path and permissions.\n", inputDir.absolutePath().toStdString().c_str());
     exit(1);
@@ -657,6 +657,10 @@ void Skyscraper::loadConfig(const QCommandLineParser &parser)
      Files that will only be overwritten if they don't already exist
      ----- */
 
+  current = "platforms.json";
+  distro = "/usr/local/etc/skyscraper/platforms.json";
+  copyFile(distro, current, false); // False means it won't overwrite if it exists
+
   current = "artwork.xml";
   distro = "/usr/local/etc/skyscraper/artwork.xml";
   copyFile(distro, current, false); // False means it won't overwrite if it exists
@@ -843,7 +847,7 @@ void Skyscraper::loadConfig(const QCommandLineParser &parser)
     config.scummIni = settings.value("scummIni").toString();
   }
   // Check for command line platform here, since we need it for 'platform' config.ini entries
-  if(parser.isSet("p") && Platform::getPlatforms().contains(parser.value("p"))) {
+  if(parser.isSet("p") && Platform::get().getPlatforms().contains(parser.value("p"))) {
     config.platform = parser.value("p");
   } else {
     if((!parser.isSet("flags") && parser.value("flags") != "help") &&
@@ -1440,7 +1444,7 @@ void Skyscraper::loadConfig(const QCommandLineParser &parser)
 
   // Choose default scraper for chosen platform if none has been set yet
   if(config.scraper.isEmpty()) {
-    config.scraper = Platform::getDefaultScraper(config.platform);
+    config.scraper = Platform::get().getDefaultScraper();
   }
 
   // If platform subfolder exists for import path, use it

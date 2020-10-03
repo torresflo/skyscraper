@@ -83,7 +83,7 @@ Scripter::Scripter()
   std::string platformStr = "";
   printf("\n");
   printf("Available platforms:\n");
-  QStringList platforms = Platform::getPlatforms();
+  QStringList platforms = Platform::get().getPlatforms();
   for(const auto &platform: platforms) {
     printf("* \033[1;33m%s\033[0m\n", platform.toStdString().c_str());
   }
@@ -204,7 +204,7 @@ Scripter::Scripter()
   }
 
   scriptFile.write("#!/bin/bash\n");
-  for(const auto &scraper: Platform::getScrapers(QString(platformStr.c_str()))) {
+  for(const auto &scraper: Platform::get().getScrapers(QString(platformStr.c_str()))) {
     if(scraper != "cache") {
       scriptFile.write((baseStr + " -s " + scraper.toStdString() + gatherStr + "\n").c_str());
     } else {

@@ -27,24 +27,29 @@
 #define PLATFORM_H
 
 #include <QObject>
-#include <QDir>
+#include <QStringList>
+#include <QMap>
 
 class Platform : public QObject
 {
-  Q_OBJECT
-
+    Q_OBJECT
 public:
-  Platform();
-  ~Platform();
+    static Platform& get();
 
-  static QStringList getPlatforms();
-  static QStringList getScrapers(QString platform);
-  static QString getFormats(QString platform, QString extensions, QString addExtensions);
-  static QString getDefaultScraper(QString platform);
-  static QStringList getAliases(QString platform);
+    void loadConfig(const QString& configPath);
+    void clearConfigData();
+
+    QStringList getPlatforms() const;
+    QStringList getScrapers(QString platform) const;
+    QString getFormats(QString platform, QString extensions, QString addExtensions) const;
+    QString getDefaultScraper() const;
+    QStringList getAliases(QString platform) const;
 
 private:
-
+    QStringList platforms;
+    QMap<QString, QStringList> platformToScrapers;
+    QMap<QString, QStringList> platformToFormats;
+    QMap<QString, QStringList> platformToAliases;
 };
 
 #endif // PLATFORM_H

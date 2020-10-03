@@ -179,8 +179,10 @@ int main(int argc, char *argv[])
   // Install the custom debug message handler used by qDebug()
   qInstallMessageHandler(customMessageHandler);
 
+  Platform::get().loadConfig("platforms.json");
+
   QString platforms;
-  for(const auto &platform: Platform::getPlatforms()) {
+  for(const auto &platform: Platform::get().getPlatforms()) {
     platforms.append("'" + platform + "', ");
   }
   // Remove the last ', '

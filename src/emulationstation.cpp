@@ -140,7 +140,7 @@ void EmulationStation::assembleList(QString &finalOutput, QList<GameEntry> &game
       QString entryAbsolutePath = entryInfo.absolutePath();
       // Check if path is exactly one subfolder beneath root platform folder (has one more '/')
       if(entryAbsolutePath.count("/") == config->inputFolder.count("/") + 1) {
-	QString extensions = Platform::getFormats(config->platform,
+	QString extensions = Platform::get().getFormats(config->platform,
 						  config->extensions,
 						  config->addExtensions);
 	// Check if the platform has both cue and bin extensions. Remove bin if it does to avoid count() below to be 2
