@@ -661,9 +661,13 @@ void Skyscraper::loadConfig(const QCommandLineParser &parser)
   distro = "/usr/local/etc/skyscraper/platforms.json";
   copyFile(distro, current, false); // False means it won't overwrite if it exists
 
+  current = "screenscraper.json";
+  distro = "/usr/local/etc/skyscraper/screenscraper.json";
+  copyFile(distro, current, false);
+
   current = "artwork.xml";
   distro = "/usr/local/etc/skyscraper/artwork.xml";
-  copyFile(distro, current, false); // False means it won't overwrite if it exists
+  copyFile(distro, current, false);
 
   current = "aliasMap.csv";
   distro = "/usr/local/etc/skyscraper/aliasMap.csv";
