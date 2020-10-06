@@ -1,6 +1,6 @@
 #!/bin/bash
 {
-    LATEST=`wget -q -O - "https://api.github.com/repos/muldjord/skyscraper/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/'`
+    LATEST=`wget -q -O - "https://api.github.com/repos/torresflo/skyscraper-enhanced/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/'`
 
     if [ ! -f VERSION ]
     then
@@ -19,7 +19,7 @@
     if [ $LATEST != $VERSION ]
     then
 	echo "--- Fetching Skyscraper v.$LATEST ---"
-	wget -N https://github.com/muldjord/skyscraper/archive/${LATEST}.tar.gz || handle_error "fetch"
+	wget -N https://github.com/torresflo/skyscraper-enhanced/archive/${LATEST}.tar.gz || handle_error "fetch"
 	echo "--- Unpacking ---"
 	tar xvzf ${LATEST}.tar.gz --strip-components 1 --overwrite || handle_error "unpack"
 	rm ${LATEST}.tar.gz

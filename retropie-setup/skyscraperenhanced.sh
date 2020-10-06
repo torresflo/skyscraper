@@ -11,7 +11,7 @@
 
 rp_module_id="skyscraper-enhanced"
 rp_module_desc="Scraper for EmulationStation by Lars Muldjord & torresflo"
-rp_module_licence="GPL3 https://raw.githubusercontent.com/torresflo/skyscraper/master/LICENSE"
+rp_module_licence="GPL3 https://raw.githubusercontent.com/torresflo/skyscraper-enhanced/master/LICENSE"
 rp_module_section="opt"
 
 function depends_skyscraper-enhanced() {
@@ -19,7 +19,7 @@ function depends_skyscraper-enhanced() {
 }
 
 function sources_skyscraper-enhanced() {
-    gitPullOrClone "$md_build" "https://github.com/torresflo/skyscraper" "$(_latest_ver_skyscraper-enhanced)"
+    gitPullOrClone "$md_build" "https://github.com/torresflo/skyscraper-enhanced" "$(_latest_ver_skyscraper-enhanced)"
 }
 
 function build_skyscraper-enhanced() {
@@ -129,7 +129,7 @@ function _get_ver_skyscraper-enhanced() {
 }
 
 function _latest_ver_skyscraper-enhanced() {
-    wget -qO- https://api.github.com/repos/torresflo/skyscraper/releases/latest | grep -m 1 tag_name | cut -d\" -f4
+    wget -qO- https://api.github.com/repos/torresflo/skyscraper-enhanced/releases/latest | grep -m 1 tag_name | cut -d\" -f4
 }
 
 # List any non-empty systems found in the ROM folder
