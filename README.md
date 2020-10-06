@@ -1,3 +1,33 @@
+# Skyscraper Enhanced by torresflo
+
+This is a fork of the famous project [Skyscraper by Lars Muldjord](https://github.com/muldjord/skyscraper) (see the readme of the original project below).
+
+## What's new?
+
+The main goal of this fork is to allow users to easily configurate and add platforms without having the needs to edit the code source directly.
+
+Currently, the only scraper supported by this feature is Screenscraper. This feature is achieved by adding new config files:
+- [platforms.json](platforms.json) describes now the supported platforms by Skyscraper.
+- [screenscraper.json](screenscraper.json). describes the required information on the Screenscraper website for each compatible platform.
+
+These 2 files are pretty straigthforward to edit if you want to add a new platform (as an example I added myself the platforms OpenBOR and Solarus). These files are copied in the folder `/usr/local/etc/skyscraper/` at the first run of the program if you want to edit them after an installation.  
+
+## Installation
+
+You can easilly install Skyscraper Enhanced by adding the script in the retropie-setup folder ([here](retropie-setup/skyscraperenhanced.sh)) in the scriptmodules folder of your retropie setup installation.
+
+This way, you can install and run the program through the retropie setup menu like the original Skyscraper. Note that the same config and installation folders of the original Skyscraper will be used instead of having everything duplicated in specific folders.
+
+## Original README
+
+Below is the original README.md. Everything is still usefull excepting the part about the platforms as you can now add/remove/edit any platform directly in the config files.
+
+<br>
+
+---
+
+<br>
+
 # Skyscraper by Lars Muldjord
 A powerful and versatile yet easy to use game scraper written in C++ for use with multiple frontends running on a Linux system (macOS and Windows too, but not officially supported). It scrapes and caches various game resources from various scraping sources, including media such as screenshot, cover and video. It then gives you the option to generate a game list and artwork for the chosen frontend by combining all of the cached resources.
 
