@@ -122,6 +122,8 @@ For first-time users I recommend reading the short and to-the-point [use case](d
 Skyscraper is a command line tool, and has many, many options for you to fiddle around with. I recommend taking a look at all of them to familiarize yourself with the possibilites:
 ```
 $ Skyscraper --help
+$ Skyscraper --flags help
+$ Skyscraper --cache help
 ```
 This will give you a description of everything Skyscraper can do if you feel adventurous! For a thorough description of all available options, check [here](docs/CLIHELP.md).
 
@@ -130,8 +132,7 @@ The most important ones are probably:
 * `-s <SCRAPING MODULE>`
 * `-u <USER:PASS>` or `-u <KEY>`
 * `--cache refresh`
-* `--videos`
-* `--unattend`
+* `--flags videos`
 
 If you have your roms in a non-default location (default for RetroPie users is `/home/<USER>/RetroPie/roms/<PLATFORM>`) or wish to export the game list or artwork to non-default locations, you will also need these:
 * `-i <PATH>`
