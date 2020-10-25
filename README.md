@@ -184,8 +184,10 @@ NOTE: If you choose to use this mode, please be aware that many of the scraping 
 * Implemented a less ridig filename match for the 'import' module to allow for close match filenames
 * Add support for grouping multi-disk games so they only have one entry in the gamelists. See issues/232 (Thank you to 'igno2k' for suggesting this)
 * Update 'igdb' module to use 'oauth2' as described here: https://api-docs.igdb.com/#account-creation
+* Add 'service check' to verify API status of online source before starting scraping run.
 
-#### Version 3.5.9 (In progress, unreleased)
+#### Version 3.5.9 (24th October 2020)
+* Implemented the new IGDB v4 authentication method. IGDB will now work again, and requires free credentials. Read more about that [here](https://github.com/muldjord/skyscraper/blob/master/docs/SCRAPINGMODULES.md#igdb)
 * Improved memory consumption when handing entries back to main thread
 * Added '.au3' file extension to id script exception list (Thank you to 'o0alucard0o' for reporting this)
 
